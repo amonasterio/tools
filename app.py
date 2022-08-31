@@ -3,6 +3,7 @@ from xml import dom
 import streamlit as st
 import sistrix_functions as sf
 import pandas as pd
+import time
 from functools import reduce
 
 
@@ -40,6 +41,7 @@ def getVisibilidadSemanal(df,num_semanas,api_key):
         else:
             es_mobile=False
         l_df.append(sf.getUltimasSemanas(num_semanas,dominio,pais,es_mobile,tipo_consulta,api_key))
+        time.sleep(0.5)
     df_merged = combinarDataFrames(l_df,'date')              
     return df_merged
 
@@ -56,6 +58,7 @@ def getVisibilidadDiaria(df,num_dias,api_key):
         else:
             es_mobile=False
         l_df.append(sf.getUltimosDias(num_dias,dominio,pais,es_mobile,tipo_consulta,api_key))
+        time.sleep(0.5)
     df_merged = combinarDataFrames(l_df,'date')              
     return df_merged
 
