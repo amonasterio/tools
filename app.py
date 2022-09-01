@@ -25,7 +25,7 @@ def combinarDataFrames(l_df,column_name):
         deja_columnas.append(4*i-1)
         i+=1
     df_salida=df_merged.iloc[:,deja_columnas]
-    df_salida.sort_values(by='date',ascending=True)
+    df_salida=df_salida.sort_values(by='date',ascending=True)
     df_salida.columns=columnas
     return df_salida
 
