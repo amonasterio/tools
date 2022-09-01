@@ -4,7 +4,9 @@ import streamlit as st
 import sistrix_functions as sf
 import pandas as pd
 import time
+import datetime
 from functools import reduce
+
 
 
 #lista de dataframes a combinar indicando el nombre de la columna que se tiene como referenca
@@ -25,7 +27,12 @@ def combinarDataFrames(l_df,column_name):
         deja_columnas.append(4*i-1)
         i+=1
     df_salida=df_merged.iloc[:,deja_columnas]
-    df_salida=df_salida.sort_values(by='date',ascending=True)
+    #convertimos el formato de 'date' en el dataframe a formato de fecha para poder ordenar
+    df_salida['date']=pd.to_datetime(df["date"],format='%d-%m-%Y')
+    df_salida=df_salida.sort_values(by='date',ascending=True).reset_index(drop=True)
+    #Cambiamos al formato que utilizaremos en el sheet
+    df_salida['date']=df_salida['date'].dt.strftime('%d-%m-%Y')
+    #renombramos las columnas
     df_salida.columns=columnas
     return df_salida
 
