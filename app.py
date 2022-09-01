@@ -25,6 +25,7 @@ def combinarDataFrames(l_df,column_name):
         deja_columnas.append(4*i-1)
         i+=1
     df_salida=df_merged.iloc[:,deja_columnas]
+    df_salida.sort_values(by='date',ascending=True)
     df_salida.columns=columnas
     return df_salida
 
@@ -93,7 +94,7 @@ if api_key!='':
                 creditos=sf.getCredits(api_key)
                 st.write('Créditos semanales restantes: '+creditos)
 
-            num_dias=st.slider('Últimos días a obtener', value=32, min_value=1, max_value=90)
+            num_dias=st.slider('Últimos días a obtener', value=30, min_value=1, max_value=30)
             btn_d = st.button('Obtener visibilidad diaria', disabled=False, key='3')
             if btn_d:
                 df_salida=getVisibilidadDiaria(df_entrada,num_dias,api_key)
