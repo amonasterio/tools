@@ -27,6 +27,7 @@ def combinarDataFrames(l_df,column_name):
         logging.error("Error al combinar data frames: "+e.args[0])
         st.error("Error al combinar data frames: "+e.args[0])    
     else:  
+        logging.info("DataFrames combinados correctamente")
         #Seleccionamos las columnas que nos interesan
         deja_columnas=[2]
         i=1
