@@ -87,7 +87,7 @@ st.title("Resultados Sistrix")
 api_key= st.text_input('API key de Sistrix', '')
 if api_key!='':
     creditos=sf.getCredits(api_key)
-    st.write('Créditos semanales restantes: '+creditos)
+    st.write('Créditos semanales restantes: '+str(creditos))
     if int(creditos) >= 1000:
         dominios_analizar=st.file_uploader('CSV con dominios a analizar', type='csv')
         if dominios_analizar is not None:
@@ -99,7 +99,8 @@ if api_key!='':
             btn_sem = st.button('Obtener visibilidad semanal', disabled=False, key='1')
             if btn_sem:
                 df_salida=getVisibilidadSemanal(df_entrada,num_semanas,api_key)
-                if not df_salida.empty:
+                if df_salida is not None and not df_salida.empty:
+                #if not df_salida.empty:
                     st.write(df_salida)
                     st.download_button(
                     label="Descargar como CSV",
