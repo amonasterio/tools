@@ -44,7 +44,7 @@ def combinarDataFrames(l_df,column_name):
         df_salida.columns=columnas
         return df_salida
 
-@st.cache(suppress_st_warning=True)
+@st.cache_data
 def getVisibilidadSemanal(df,num_semanas,api_key):
     l_df=[]
     for index in range(len(df)):
@@ -61,7 +61,7 @@ def getVisibilidadSemanal(df,num_semanas,api_key):
     df_merged = combinarDataFrames(l_df,'date')      
     return df_merged
 
-@st.cache(suppress_st_warning=True)
+@st.cache_data
 def getVisibilidadDiaria(df,num_dias,api_key):
     l_df=[]
     for index in range(len(df)):
