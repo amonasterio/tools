@@ -60,7 +60,7 @@ def getVisibilidadSemanal(df,num_semanas,api_key):
         time.sleep(0.5)
     df_merged = combinarDataFrames(l_df,'date')      
     return df_merged
-
+ 
 @st.cache_data
 def getVisibilidadDiaria(df,num_dias,api_key):
     l_df=[]

@@ -71,6 +71,8 @@ def getUltimasSemanas(num_semanas, dominio, pais, es_mobile,es_host, api_key):
     url+='&country='+pais+'&history=true&num='+str(num_semanas)
     if es_mobile:
         url+='&mobile=true'
+    else:
+        url+='&mobile=false'
     df=getDataFrameResponse(url,es_mobile,es_host)
     return df
 
@@ -88,8 +90,9 @@ def getUltimosDias(num_dias, dominio, pais, es_mobile,tipo_consulta, api_key):
     url+='&country='+pais+'&history=true&num='+str(num_dias)
     if es_mobile:
         url+='&mobile=true'
+    else:
+        url+='&mobile=false'
     url+='&daily=true'
-    print(url)
     df=getDataFrameResponse(url,es_mobile,tipo_consulta,pais)
     return df
 
@@ -104,5 +107,7 @@ def getUltimasSemanas(num_semanas, dominio, pais, es_mobile,tipo_consulta, api_k
     url+='&country='+pais+'&history=true&num='+str(num_semanas)
     if es_mobile:
         url+='&mobile=true'
+    else:
+        url+='&mobile=false'
     df=getDataFrameResponse(url,es_mobile,tipo_consulta,pais)
     return df
